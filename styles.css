@@ -1,0 +1,261 @@
+:root {
+    --bg-color: lightblue;
+    --text-color: #333;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --link-color: #0066cc;
+    --hr-color: #333;
+}
+
+/* Dark mode toggles variables on <main> */
+.theme-toggle-checkbox:checked ~ main {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --card-bg: rgba(34, 34, 34, 0.9);
+    --link-color: #66aaff;
+    --hr-color: #888;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding: 20px;
+}
+
+/* Force all text inside main to follow theme text color */
+main, main * {
+    color: var(--text-color);
+}
+
+img {
+    display: block;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 3px solid #333;
+    transition: all 0.3s ease;
+    animation: fadeIn 1s ease-in;
+}
+
+img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    animation: slideIn 1s ease-out;
+}
+
+ul {
+    list-style-type: none;
+    padding: 15px;
+    background-color: var(--card-bg);
+    border-radius: 5px;
+}
+
+li {
+    padding: 5px 0;
+}
+
+a {
+    display: inline-block;
+    margin: 10px 0;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h3 {
+    margin: 20px 0 10px;
+    font-size: 1.5rem;
+}
+
+dl {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    height: 1px;
+    background-color: var(--hr-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--card-bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.testimonials {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 5px;
+}
+
+.testimonial {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 3px solid var(--link-color);
+}
+
+.download-cv {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: var(--link-color);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.download-cv:hover {
+    background-color: #004499;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--card-bg);
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    pre, ul, dl {
+        font-size: 0.9rem;
+    }
+}
+
+/* Theme Toggle Switch */
+.theme-toggle-checkbox {
+    display: none;
+}
+
+.theme-toggle-label {
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    display: inline-block;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-ball {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle-checkbox:checked + .theme-toggle-label .toggle-ball {
+    transform: translateX(25px);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--link-color);
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.back-to-top:hover {
+    background-color: #004499;
+}
